@@ -4,7 +4,9 @@ fixtures:
     mysql: "https://github.com/puppetlabs/puppetlabs-mysql.git"
     firewall: "https://github.com/puppetlabs/puppetlabs-firewall.git"
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-    nginx: "https://github.com/voxpupuli/puppet-nginx.git"
+    nginx:
+      repo: "https://github.com/voxpupuli/puppet-nginx.git"
+      ref:  "0.5.0"
     php:
       repo: "https://github.com/voxpupuli/puppet-php.git"
       ref:  "3.4.2"
