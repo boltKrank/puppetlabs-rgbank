@@ -100,13 +100,13 @@ define rgbank::web::base(
   }
 
   nginx::resource::location { "${name}_root":
-    ensure      => present,
-    vhost       => "${::fqdn}-${name}",
-    location    => '~ \.php$',
-    index_files => ['index.php'],
-    fastcgi     => "127.0.0.1:9000",
-    www_root    => $install_dir_real,
-    fastcgi_script  => undef,
+    ensure         => present,
+    vhost          => "${::fqdn}-${name}",
+    location       => '~ \.php$',
+    index_files    => ['index.php'],
+    fastcgi        => '127.0.0.1:9000',
+    www_root       => $install_dir_real,
+    fastcgi_script => undef,
   }
 
   nginx::resource::vhost { "${::fqdn}-${name}":
