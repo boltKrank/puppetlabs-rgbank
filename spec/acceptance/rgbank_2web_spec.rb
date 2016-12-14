@@ -8,7 +8,7 @@ describe 'rgbank web define' do
         pp = <<-EOS
         package {'wget': ensure => present, }
         class { '::php': composer => false, }
-        class { '::nginx': }
+        class { '::nginx': confd_purge => true, vhost_purge => true, }
         class {'::mysql::client': }
         class {'::mysql::bindings': php_enable => true }
         package {'git': ensure => present, }
