@@ -16,6 +16,7 @@ HOSTS:
       chown root: ~root/.ssh/authorized_keys
       sed -i 's/^#PermitRootLogin/PermitRootLogin/g' /etc/ssh/sshd_config
       service sshd restart
+      echo '192.168.0.224   jenkins.demo.lan        jenkins' >> /etc/hosts
 CONFIG:
  # log_level: debug
   type: foss
