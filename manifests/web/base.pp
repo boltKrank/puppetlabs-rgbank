@@ -69,16 +69,37 @@ define rgbank::web::base(
     }
 
   } else {
-    archive { "rgbank-build-${version}-${name}":
-      ensure     => present,
-      url        => $source,
-      target     => "${install_dir_real}/wp-content/themes/rgbank",
-      checksum   => false,
-      src_target => '/tmp',
-      root_dir   => '.',
-      require    => Wordpress::Instance::App["rgbank_${name}"],
-      before     => File["${install_dir_real}/wp-content/uploads"],
+
+    file { "${install_dir_real}/deploy_theme":
+      ensure => directory,
+      owner  => root,
+      group  => root,
+      mode   => '0755',
     }
+
+    file { "${install_dir_real}/deploy_theme/${version}":
+      ensure => directory,
+      owner  => root,
+      group  => root,
+      mode   => '0755',
+    }
+
+    staging::deploy { "rgbank-build-${version}-${name}":
+      source  => $source,
+      target  => "${install_dir_real}/deploy_theme/${version}/",
+      creates => "${install_dir_real}/deploy_theme/${version}/index.php",
+    }
+
+    file { "${install_dir_real}/wp-content/themes/rgbank":
+      ensure  => link,
+      target  => "${install_dir_real}/deploy_theme/${version}",
+      require => [
+        Staging::Deploy["rgbank-build-${version}-${name}"],
+        Wordpress::Instance::App["rgbank_${name}"],
+      ],
+      before  => File["${install_dir_real}/wp-content/uploads"],
+    }
+
   }
 
   file { "${install_dir_real}/wp-content/uploads":
