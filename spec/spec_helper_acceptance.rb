@@ -34,7 +34,7 @@ RSpec.configure do |c|
 
       if ENV['BEAKER_custom_hiera'] == 'true'
         on host, puppet('module', 'install', 'crayfishx-hiera_http'), { :acceptable_exit_codes => [0,1] }
-        shell '/opt/puppetlabs/puppet/bin/gem install hiera-http', :acceptable_exit_codes => [0]
+        shell '/opt/puppetlabs/puppet/bin/gem install hiera-http -v 1.4.0', :acceptable_exit_codes => [0]
         scp_to(host, 'hiera.yaml', '/etc/puppetlabs/puppet/hiera.yaml')
       end
 
