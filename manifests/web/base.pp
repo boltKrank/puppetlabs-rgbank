@@ -94,7 +94,7 @@ define rgbank::web::base(
       ensure  => link,
       target  => "${install_dir_real}/deploy_theme/${version}",
       require => [
-        Staging::Deploy["rgbank-build-${version}-${name}"],
+        Staging::Deploy["rgbank-build-${version}.tar.gz"],
         Wordpress::Instance::App["rgbank_${name}"],
       ],
       before  => File["${install_dir_real}/wp-content/uploads"],
