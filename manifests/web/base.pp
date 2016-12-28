@@ -88,6 +88,8 @@ define rgbank::web::base(
       source  => $source,
       target  => "${install_dir_real}/deploy_theme/${version}/",
       creates => "${install_dir_real}/deploy_theme/${version}/index.php",
+      owner   => root,
+      group   => root,
     }
 
     file { "${install_dir_real}/wp-content/themes/rgbank":
