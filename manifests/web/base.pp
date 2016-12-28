@@ -79,9 +79,6 @@ define rgbank::web::base(
 
     file { "${install_dir_real}/deploy_theme/${version}":
       ensure => directory,
-      owner  => root,
-      group  => root,
-      mode   => '0755',
     }
 
     staging::deploy { "rgbank-build-${version}.tar.gz":
