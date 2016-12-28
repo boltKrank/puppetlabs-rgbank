@@ -84,7 +84,7 @@ define rgbank::web::base(
       mode   => '0755',
     }
 
-    staging::deploy { "rgbank-build-${version}-${name}":
+    staging::deploy { "rgbank-build-${version}.tar.gz":
       source  => $source,
       target  => "${install_dir_real}/deploy_theme/${version}/",
       creates => "${install_dir_real}/deploy_theme/${version}/index.php",
