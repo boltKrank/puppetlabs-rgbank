@@ -17,19 +17,16 @@ application rgbank (
   }
 
   $web_https = $web_components.map |$comp_name| {
-    $http = Http["rgbank-web-${comp_name}"]
-
-    notify{$comp_name: }
 
     rgbank::web { $comp_name:
       use_docker  => $use_docker,
       listen_port => String($listen_port),
       consume     => Database[$db_component],
-      export      => $http,
+      export      => Http["rgbank-web-${comp_name}"],
     }
 
     #Return HTTP service resource
-    $http
+    Http["rgbank-web-${comp_name}"]
   }
 
   rgbank::load { $load_component:
