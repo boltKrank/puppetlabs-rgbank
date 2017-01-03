@@ -26,7 +26,8 @@ application rgbank (
     }
 
     #Return HTTP service resource
-    Http["rgbank-web-${comp_name}"]
+    $http = Http["rgbank-web-${comp_name}"]
+    $http
   }
 
   rgbank::load { $load_component:
