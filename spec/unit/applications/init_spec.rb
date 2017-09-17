@@ -103,7 +103,7 @@ describe 'rgbank', :type => :application do
           it { should contain_http('rgbank-web-test.puppet.com_getting-started') }
 
           # Check for  defines (these are tested in their own modules so just validating they are present)
-          it { should contain_nginx__resource__vhost('foo.example.com-test.puppet.com_getting-started') }
+          it { should contain_nginx__resource__server('foo.example.com-test.puppet.com_getting-started') }
           it { should contain_nginx__resource__location('test.puppet.com_getting-started_root') }
           it { should contain_haproxy__balancermember('foo.example.com') }
           it { should contain_haproxy__listen('rgbank-getting-started') }

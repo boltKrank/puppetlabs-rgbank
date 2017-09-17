@@ -4,16 +4,16 @@ define rgbank::web::docker(
   $db_user,
   $db_password,
   $image_tag = 'latest',
-  $listen_port = '80'
+  $listen_port = 80
 ) {
-  include docker
+  include ::docker
 
   docker::image {'ccaum/rgbank-web': }
 
   docker::run { 'rgbank-web':
-    image   => 'ccaum/rgbank-web',
-    ports   => ["${listen_port}:80"],
-    env     => [
+    image => 'ccaum/rgbank-web',
+    ports => ["${listen_port}:80"],
+    env   => [
       "DB_NAME=${db_name}",
       "DB_PASSWORD=${db_password}",
       "DB_USER=${db_user}",

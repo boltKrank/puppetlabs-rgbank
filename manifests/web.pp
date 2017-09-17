@@ -5,7 +5,7 @@ define rgbank::web (
   $db_password,
   $version = hiera('rgbank-build-version', 'master'),
   $source = hiera('rgbank-build-path', 'https://github.com/puppetlabs/rgbank'),
-  $listen_port = '8060',
+  $listen_port = 8060,
   $install_dir = undef,
   $image_tag = 'latest',
   $use_docker = false,

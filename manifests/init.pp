@@ -1,7 +1,7 @@
 application rgbank (
   $db_username = 'test',
   $db_password = 'test',
-  $listen_port = '8060',
+  $listen_port = 8060,
   $use_docker  = false,
   $lb_port     = '80',
 ) {
@@ -20,7 +20,7 @@ application rgbank (
 
     rgbank::web { $comp_name:
       use_docker  => $use_docker,
-      listen_port => String($listen_port),
+      listen_port => $listen_port,
       consume     => Database[$db_component],
       export      => Http["rgbank-web-${comp_name}"],
     }

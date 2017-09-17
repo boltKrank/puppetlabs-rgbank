@@ -121,7 +121,7 @@ define rgbank::web::base(
 
   nginx::resource::location { "${name}_root":
     ensure         => present,
-    vhost          => "${::fqdn}-${name}",
+    server         => "${::fqdn}-${name}",
     location       => '~ \.php$',
     index_files    => ['index.php'],
     fastcgi        => '127.0.0.1:9000',
@@ -129,7 +129,7 @@ define rgbank::web::base(
     fastcgi_script => undef,
   }
 
-  nginx::resource::vhost { "${::fqdn}-${name}":
+  nginx::resource::server { "${::fqdn}-${name}":
     listen_port    => $listen_port,
     www_root       => $install_dir_real,
     index_files    => [ 'index.php' ],
