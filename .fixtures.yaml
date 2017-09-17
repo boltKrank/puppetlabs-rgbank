@@ -13,10 +13,13 @@ fixtures:
     haproxy: "https://github.com/puppetlabs/puppetlabs-haproxy.git"
     concat: "https://github.com/puppetlabs/puppetlabs-concat.git"
     wordpress: "https://github.com/hunner/puppet-wordpress.git"
-    selinux: "https://github.com/voxpupuli/puppet-selinux.git"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo.git"
     staging: "https://github.com/voxpupuli/puppet-staging"
     docker: "https://github.com/garethr/garethr-docker.git"
     epel: "https://github.com/stahnma/puppet-module-epel.git"
   symlinks:
     rgbank: "#{source_dir}"
+  forge_modules:
+    selinux:
+      repo: "jfryman-selinux"
+      ref: "0.4.0"
