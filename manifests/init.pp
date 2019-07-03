@@ -35,5 +35,3 @@ application rgbank (
     port            => $lb_port,
     require         => $web_https,
     export          => Http[$load_component],
-  }
-}
